@@ -38,6 +38,10 @@ jobs:
           docker pull ${{ env.IMAGE_PREFIX }}/frontend:main
 
       - name: Deploy
+        env:
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
         run: |
           docker compose -f docker-compose.yml down
           IMAGE_PREFIX=${{ env.IMAGE_PREFIX }} TAG=main docker compose -f docker-compose.prod.yml up -d
