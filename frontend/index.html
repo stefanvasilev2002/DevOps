@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My App</title>
+</head>
+<body>
+  <h1>My App</h1>
+  <p id="msg">Loading...</p>
+
+  <script>
+    fetch("http://localhost:8000/api/message")
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById("msg").textContent = data.message;
+      })
+      .catch(() => {
+        document.getElementById("msg").textContent = "Could not reach backend.";
+      });
+  </script>
+</body>
+</html>
