@@ -16,4 +16,4 @@ def health():
 
 @app.get("/api/message")
 def get_message():
-    return {"message": "Hello from FastAPI!"}
+    return {"message": "Hello from FastAPI! - Stefan Vasilev 259082"}
